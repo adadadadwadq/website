@@ -5,10 +5,20 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Roblox Watcher</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="logo.png" />
+
   <style>
     /* Reset & base */
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: "Poppins", sans-serif; }
-    html,body { height: 100%; background: #121212; color: #fff; }
+    html,body { height: 100%; color: #fff; }
+
+    /* Set background image for the whole page */
+    body {
+      background: url("banner2.png") center/cover no-repeat fixed;
+      background-color: #121212; /* fallback color */
+    }
+
     a { color: inherit; }
 
     /* Header */
@@ -74,7 +84,7 @@
     section {
       margin: 28px 0;
       padding: 24px;
-      background: rgba(255,255,255,0.04);
+      background: rgba(0,0,0,0.6); /* semi-transparent so background shows through */
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 12px;
       box-shadow: 0 8px 24px rgba(0,0,0,0.35);
