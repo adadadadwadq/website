@@ -11,12 +11,13 @@
   <style>
     /* Reset & base */
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: "Poppins", sans-serif; }
-    html,body { height: 100%; color: #fff; }
-
-    /* Set background image for the whole page */
-    body {
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      color: #fff;
       background: url("banner2.png") center/cover no-repeat fixed;
-      background-color: #121212; /* fallback color */
+      background-color: #121212;
     }
 
     a { color: inherit; }
@@ -64,13 +65,9 @@
 
     .roblox-btn { background: #28a745; color: #fff; }
     .roblox-btn:active { transform: translateY(0); }
-
     .exploit-btn { background: #dc3545; color: #fff; }
-
     .discord-btn { background: #5865F2; color: #fff; }
-
     .patreon-btn { background: #f96854; color: #fff; }
-
     .terms-btn { background: #00c3ff; color: #fff; }
     .privacy-btn { background: #ffa500; color: #fff; }
 
@@ -84,9 +81,10 @@
     section {
       margin: 28px 0;
       padding: 24px;
-      background: rgba(0,0,0,0.6); /* semi-transparent so background shows through */
-      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(0,0,0,0.25);
+      backdrop-filter: blur(8px);
       border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.1);
       box-shadow: 0 8px 24px rgba(0,0,0,0.35);
     }
     section h2 { color: #00c3ff; font-size: 1.4rem; margin-bottom: 10px; }
