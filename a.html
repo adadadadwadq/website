@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Roblox Watcher</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset & base */
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: "Poppins", sans-serif; }
+    html,body { height: 100%; background: #121212; color: #fff; }
+    a { color: inherit; }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 28px;
+      background: rgba(0,0,0,0.30);   /* semi-transparent black */
+      backdrop-filter: blur(8px);     /* subtle blur behind header */
+      z-index: 1000;
+    }
+    /* keep page content from sliding under header */
+    body { padding-top: 64px; }
+
+    .logo img { height: 46px; display: block; }
+
+    .buttons {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn {
+      text-decoration: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+      transition: transform .16s ease, box-shadow .16s ease;
+      white-space: nowrap;
+    }
+    .btn:hover { transform: translateY(-3px); }
+
+    .roblox-btn { background: #28a745; color: #fff; }
+    .roblox-btn:active { transform: translateY(0); }
+
+    .exploit-btn { background: #dc3545; color: #fff; }
+
+    .discord-btn { background: #5865F2; color: #fff; }
+
+    .patreon-btn { background: #f96854; color: #fff; }
+
+    /* Banner - header is transparent so banner sits visually under it */
+    .banner {
+      height: 70vh;
+      background: url("https://i.imgur.com/ibcC0Ii.png") center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      margin: 0; /* no offset; header overlays the banner */
+    }
+
+    /* Main content */
+    main {
+      max-width: 980px;
+      margin: 36px auto;
+      padding: 0 20px 60px;
+    }
+
+    section {
+      margin: 28px 0;
+      padding: 24px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+    }
+    section h2 { color: #00c3ff; font-size: 1.4rem; margin-bottom: 10px; }
+    section p { color: #ddd; line-height: 1.6; }
+
+    footer { text-align: center; color: rgba(255,255,255,0.6); padding: 26px 10px; }
+
+    /* Responsive tweaks */
+    @media (max-width: 760px) {
+      header { padding: 10px 16px; }
+      .btn { padding: 8px 10px; font-size: 0.9rem; }
+      .banner { height: 48vh; background-position: center top; }
+      body { padding-top: 64px; }
+      .logo img { height: 40px; }
+      .buttons { gap: 8px; flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo" aria-label="Roblox Watcher logo">
+      <img src="https://i.imgur.com/vksg92r.png" alt="Roblox Watcher logo">
+    </div>
+
+    <div class="buttons" role="navigation" aria-label="Primary actions">
+      <!-- Roblox Watcher install -->
+      <a
+        class="btn roblox-btn"
+        href="https://discord.com/oauth2/authorize?client_id=1415587745933557871&scope=bot%20applications.commands"
+        target="_blank" rel="noopener noreferrer" aria-label="Install Roblox Watcher on your Discord server">
+        Install Roblox Watcher
+      </a>
+
+      <!-- Exploit Watcher install -->
+      <a
+        class="btn exploit-btn"
+        href="https://discord.com/oauth2/authorize?client_id=1421635172809310268&scope=bot%20applications.commands"
+        target="_blank" rel="noopener noreferrer" aria-label="Install Exploit Watcher on your Discord server">
+        Install Exploit Watcher
+      </a>
+
+      <!-- Discord invite -->
+      <a
+        class="btn discord-btn"
+        href="https://discord.gg/b3ykudvB9r"
+        target="_blank" rel="noopener noreferrer" aria-label="Join our Discord server invite">
+        Join Discord
+      </a>
+
+      <!-- Patreon -->
+      <a
+        class="btn patreon-btn"
+        href="https://www.patreon.com/c/RobloxWatcher"
+        target="_blank" rel="noopener noreferrer" aria-label="Support us on Patreon">
+        Support on Patreon
+      </a>
+    </div>
+  </header>
+
+  <div class="banner" role="img" aria-label="Site banner"></div>
+
+  <main>
+    <section id="terms">
+      <h2>Terms and Conditions</h2>
+      <p>
+        By accessing and using Roblox Watcher and Exploit Watcher, you agree to comply with these Terms.
+        Use of our services must follow Roblox’s Community Standards. The software is provided "as is"
+        without warranties. Continued use implies acceptance of updates and changes to these terms.
+      </p>
+    </section>
+
+    <section id="privacy">
+      <h2>Privacy Policy</h2>
+      <p>
+        We respect your privacy and aim to keep your data secure. Roblox Watcher only processes data
+        necessary for functionality and protection. By using the tools, you consent to the privacy practices.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 Roblox Watcher. All rights reserved.
+  </footer>
+
+</body>
+</html>
