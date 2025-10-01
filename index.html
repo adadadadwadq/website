@@ -22,8 +22,8 @@
       align-items: center;
       justify-content: space-between;
       padding: 10px 28px;
-      background: rgba(0,0,0,0.30);   /* semi-transparent black */
-      backdrop-filter: blur(8px);     /* subtle blur behind header */
+      background: rgba(0,0,0,0.30);
+      backdrop-filter: blur(8px);
       z-index: 1000;
     }
     body { padding-top: 64px; }
@@ -62,19 +62,7 @@
     .patreon-btn { background: #f96854; color: #fff; }
 
     .terms-btn { background: #00c3ff; color: #fff; }
-
     .privacy-btn { background: #ffa500; color: #fff; }
-
-    /* Banner - header is transparent so banner sits visually under it */
-    .banner {
-      height: 70vh;
-      background: url("banner.png") center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      margin: 0;
-    }
 
     /* Main content */
     main {
@@ -99,7 +87,6 @@
     @media (max-width: 760px) {
       header { padding: 10px 16px; }
       .btn { padding: 8px 10px; font-size: 0.9rem; }
-      .banner { height: 48vh; background-position: center top; }
       body { padding-top: 64px; }
       .logo img { height: 40px; }
       .buttons { gap: 8px; flex-wrap: wrap; }
@@ -114,58 +101,51 @@
     </div>
 
     <div class="buttons" role="navigation" aria-label="Primary actions">
-      <a
-        class="btn roblox-btn"
-        href="https://discord.com/oauth2/authorize?client_id=1415587745933557871&scope=bot%20applications.commands"
-        target="_blank" rel="noopener noreferrer" aria-label="Install Roblox Watcher on your Discord server">
-        Install Roblox Watcher
-      </a>
-
-      <a
-        class="btn exploit-btn"
-        href="https://discord.com/oauth2/authorize?client_id=1421635172809310268&scope=bot%20applications.commands"
-        target="_blank" rel="noopener noreferrer" aria-label="Install Exploit Watcher on your Discord server">
-        Install Exploit Watcher
-      </a>
-
-      <a
-        class="btn discord-btn"
-        href="https://discord.gg/b3ykudvB9r"
-        target="_blank" rel="noopener noreferrer" aria-label="Join our Discord server invite">
-        Join Discord
-      </a>
-
-      <a
-        class="btn patreon-btn"
-        href="https://www.patreon.com/c/RobloxWatcher"
-        target="_blank" rel="noopener noreferrer" aria-label="Support us on Patreon">
-        Support on Patreon
-      </a>
-
-      <a
-        class="btn terms-btn"
-        href="terms.html"
-        target="_blank" rel="noopener noreferrer" aria-label="View Terms and Conditions">
-        Terms
-      </a>
-
-      <a
-        class="btn privacy-btn"
-        href="privacy.html"
-        target="_blank" rel="noopener noreferrer" aria-label="View Privacy Policy">
-        Privacy
-      </a>
+      <a class="btn roblox-btn" href="https://discord.com/oauth2/authorize?client_id=1415587745933557871&scope=bot%20applications.commands" target="_blank" rel="noopener noreferrer">Install Roblox Watcher</a>
+      <a class="btn exploit-btn" href="https://discord.com/oauth2/authorize?client_id=1421635172809310268&scope=bot%20applications.commands" target="_blank" rel="noopener noreferrer">Install Exploit Watcher</a>
+      <a class="btn discord-btn" href="https://discord.gg/b3ykudvB9r" target="_blank" rel="noopener noreferrer">Join Discord</a>
+      <a class="btn patreon-btn" href="https://www.patreon.com/c/RobloxWatcher" target="_blank" rel="noopener noreferrer">Support on Patreon</a>
+      <a class="btn terms-btn" href="terms.html" target="_blank" rel="noopener noreferrer">Terms</a>
+      <a class="btn privacy-btn" href="privacy.html" target="_blank" rel="noopener noreferrer">Privacy</a>
     </div>
   </header>
 
-  <div class="banner" role="img" aria-label="Site banner"></div>
-
   <main>
+    <!-- Welcome Section -->
     <section>
       <h2>Welcome to Roblox Watcher</h2>
       <p>
         Protect your server from inappropriate players. Use Roblox Watcher and Exploit Watcher to enforce
         Roblox Community Standards on your Discord server. Join our Discord or support us on Patreon.
+      </p>
+    </section>
+
+    <!-- Roblox Watcher Banlist Size -->
+    <section>
+      <h2>Roblox Watcher Banlist Size</h2>
+      <p>
+        Roblox Watcher currently has a banlist with over <strong>1,000,000+</strong> entries, ensuring
+        that your server stays protected from malicious or inappropriate users.
+      </p>
+    </section>
+
+    <!-- Exploit Watcher Banlist Size -->
+    <section>
+      <h2>Exploit Watcher Banlist Size</h2>
+      <p>
+        Exploit Watcher maintains a comprehensive banlist of <strong>1,000,000+</strong> known exploiters
+        and malicious users, keeping your server safe from threats.
+      </p>
+    </section>
+
+    <!-- Trust & Reliability Section -->
+    <section>
+      <h2>Trusted & Reliable</h2>
+      <p>
+        Roblox Watcher and Exploit Watcher are fully compliant with Discord’s Terms of Service and
+        Roblox Community Standards. Thousands of server owners trust our bots for moderation,
+        safety, and peace of mind. Your data is kept secure and the bots operate efficiently
+        without causing disruptions.
       </p>
     </section>
   </main>
