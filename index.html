@@ -26,7 +26,6 @@
       backdrop-filter: blur(8px);     /* subtle blur behind header */
       z-index: 1000;
     }
-    /* keep page content from sliding under header */
     body { padding-top: 64px; }
 
     .logo img { height: 46px; display: block; }
@@ -35,6 +34,7 @@
       display: flex;
       gap: 12px;
       align-items: center;
+      flex-wrap: wrap;
     }
 
     .btn {
@@ -61,15 +61,19 @@
 
     .patreon-btn { background: #f96854; color: #fff; }
 
+    .terms-btn { background: #00c3ff; color: #fff; }
+
+    .privacy-btn { background: #ffa500; color: #fff; }
+
     /* Banner - header is transparent so banner sits visually under it */
     .banner {
       height: 70vh;
-      background: url("https://i.imgur.com/ibcC0Ii.png") center/cover no-repeat;
+      background: url("banner.png") center/cover no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 24px;
-      margin: 0; /* no offset; header overlays the banner */
+      margin: 0;
     }
 
     /* Main content */
@@ -92,7 +96,6 @@
 
     footer { text-align: center; color: rgba(255,255,255,0.6); padding: 26px 10px; }
 
-    /* Responsive tweaks */
     @media (max-width: 760px) {
       header { padding: 10px 16px; }
       .btn { padding: 8px 10px; font-size: 0.9rem; }
@@ -107,11 +110,10 @@
 
   <header>
     <div class="logo" aria-label="Roblox Watcher logo">
-      <img src="https://i.imgur.com/vksg92r.png" alt="Roblox Watcher logo">
+      <img src="logo.png" alt="Roblox Watcher logo">
     </div>
 
     <div class="buttons" role="navigation" aria-label="Primary actions">
-      <!-- Roblox Watcher install -->
       <a
         class="btn roblox-btn"
         href="https://discord.com/oauth2/authorize?client_id=1415587745933557871&scope=bot%20applications.commands"
@@ -119,7 +121,6 @@
         Install Roblox Watcher
       </a>
 
-      <!-- Exploit Watcher install -->
       <a
         class="btn exploit-btn"
         href="https://discord.com/oauth2/authorize?client_id=1421635172809310268&scope=bot%20applications.commands"
@@ -127,7 +128,6 @@
         Install Exploit Watcher
       </a>
 
-      <!-- Discord invite -->
       <a
         class="btn discord-btn"
         href="https://discord.gg/b3ykudvB9r"
@@ -135,12 +135,25 @@
         Join Discord
       </a>
 
-      <!-- Patreon -->
       <a
         class="btn patreon-btn"
         href="https://www.patreon.com/c/RobloxWatcher"
         target="_blank" rel="noopener noreferrer" aria-label="Support us on Patreon">
         Support on Patreon
+      </a>
+
+      <a
+        class="btn terms-btn"
+        href="terms.html"
+        target="_blank" rel="noopener noreferrer" aria-label="View Terms and Conditions">
+        Terms
+      </a>
+
+      <a
+        class="btn privacy-btn"
+        href="privacy.html"
+        target="_blank" rel="noopener noreferrer" aria-label="View Privacy Policy">
+        Privacy
       </a>
     </div>
   </header>
@@ -148,20 +161,11 @@
   <div class="banner" role="img" aria-label="Site banner"></div>
 
   <main>
-    <section id="terms">
-      <h2>Terms and Conditions</h2>
+    <section>
+      <h2>Welcome to Roblox Watcher</h2>
       <p>
-        By accessing and using Roblox Watcher and Exploit Watcher, you agree to comply with these Terms.
-        Use of our services must follow Roblox’s Community Standards. The software is provided "as is"
-        without warranties. Continued use implies acceptance of updates and changes to these terms.
-      </p>
-    </section>
-
-    <section id="privacy">
-      <h2>Privacy Policy</h2>
-      <p>
-        We respect your privacy and aim to keep your data secure. Roblox Watcher only processes data
-        necessary for functionality and protection. By using the tools, you consent to the privacy practices.
+        Protect your server from inappropriate players. Use Roblox Watcher and Exploit Watcher to enforce
+        Roblox Community Standards on your Discord server. Join our Discord or support us on Patreon.
       </p>
     </section>
   </main>
