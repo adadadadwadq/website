@@ -9,6 +9,24 @@
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: "Poppins", sans-serif; }
     html, body { height: 100%; background: #121212; color: #fff; }
     a { color: #00c3ff; text-decoration: none; }
+    
+    /* Header Logo */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      padding: 10px 28px;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(5px);
+      z-index: 1000;
+    }
+    header .logo img { height: 46px; display: block; }
+    body { padding-top: 64px; }
+
     main { max-width: 900px; margin: 36px auto; padding: 20px; }
     h1, h2 { color: #00c3ff; margin-bottom: 16px; }
     h1 { font-size: 2rem; }
@@ -18,9 +36,21 @@
     footer { text-align: center; color: rgba(255,255,255,0.6); padding: 26px 10px; }
     body { background: url("banner3.png") center/cover no-repeat; background-attachment: fixed; }
     section { background: rgba(0,0,0,0.65); padding: 24px; border-radius: 12px; margin-bottom: 24px; }
+    
+    @media (max-width: 760px) {
+      header { padding: 10px 16px; }
+      header .logo img { height: 40px; }
+    }
   </style>
 </head>
 <body>
+
+  <!-- Header with clickable logo -->
+  <header>
+    <a href="index.html" class="logo" aria-label="Go to home">
+      <img src="backgroundlogo.png" alt="Roblox Watcher Logo">
+    </a>
+  </header>
 
   <main>
     <section>
@@ -66,7 +96,7 @@
       <h2>4. Security Information</h2>
       <ul>
         <li>We take precautions in ensuring our database is secure.</li>
-        <li>“Although protections are in place, no system can be considered completely infallible. </li>
+        <li>Although protections are in place, no system can be considered completely infallible.</li>
       </ul>
     </section>
 
@@ -74,7 +104,7 @@
       <h2>5. Appeal Information</h2>
       <ul>
         <li>If you believe your account has been added to the banlist by mistake, you may submit an <strong>appeal request</strong> through the official Roblox Watcher Discord server.</li>
-        <li>Successful appeals may result in the removal of your ID from the stored banlists. Note: Condo Bans are <strong>unappelaable</strong> unless proven innocent.</li>
+        <li>Successful appeals may result in the removal of your ID from the stored banlists. Note: Condo Bans are <strong>unappealable</strong> unless proven innocent.</li>
       </ul>
     </section>
 
@@ -92,7 +122,3 @@
 
 </body>
 </html>
-
-
-
-
