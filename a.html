@@ -174,7 +174,52 @@
     &copy; 2025 Roblox Watcher. All rights reserved.
   </footer>
 
+  <script>
+async function loadStatus() {
+  try {
+    const response = await fetch('/status.json');
+    const data = await response.json();
+
+    const badge = document.getElementById('status-badge');
+    let color = '';
+    let message = '';
+
+    switch(data.status) {
+      case 'online':
+        color = '#43b581';
+        message = '🟢 ' + data.message;
+        break;
+      case 'minor':
+        color = '#faa61a';
+        message = '🟡 ' + data.message;
+        break;
+      case 'outage':
+        color = '#f04747';
+        message = '🔴 ' + data.message;
+        break;
+      default:
+        color = '#777';
+        message = '⚪ Unknown status';
+    }
+
+    badge.style.backgroundColor = color;
+    badge.style.color = 'white';
+    badge.innerText = message;
+
+  } catch(err) {
+    console.error('Failed to load status:', err);
+    const badge = document.getElementById('status-badge');
+    badge.innerText = '⚪ Error loading status';
+    badge.style.backgroundColor = '#777';
+    badge.style.color = 'white';
+  }
+}
+
+loadStatus();
+</script>
+
   
 </body>
 </html>
+
 
