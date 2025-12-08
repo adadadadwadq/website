@@ -58,6 +58,10 @@
     .discord-btn { background: #5865F2; color: #fff; }
     .patreon-btn { background: #f96854; color: #fff; }
 
+    /* Status button style */
+    .status-btn { background: #00c3ff; color: #fff; }
+    .status-btn:active { transform: translateY(0); }
+
     /* Banner */
     .banner {
       height: 70vh;
@@ -126,20 +130,19 @@
     </div>
 
     <div class="buttons" role="navigation" aria-label="Primary actions">
-      <a class="btn roblox-btn" href="https://discord.com/oauth2/authorize?client_id=1415587745933557871&scope=bot%20applications.commands" target="_blank" rel="noopener noreferrer" aria-label="Install Roblox Watcher on your Discord server">
+      <a class="btn roblox-btn" href="https://discord.com/oauth2/authorize?client_id=1415587745933557871&scope=bot%20applications.commands" target="_blank" rel="noopener noreferrer">
         Install Roblox Watcher
       </a>
-      <a class="btn exploit-btn" href="https://discord.com/oauth2/authorize?client_id=1421635172809310268&scope=bot%20applications.commands" target="_blank" rel="noopener noreferrer" aria-label="Install Exploit Watcher on your Discord server">
+      <a class="btn exploit-btn" href="https://discord.com/oauth2/authorize?client_id=1421635172809310268&scope=bot%20applications.commands" target="_blank" rel="noopener noreferrer">
         Install Exploit Watcher
       </a>
-      <a class="btn discord-btn" href="https://discord.gg/b3ykudvB9r" target="_blank" rel="noopener noreferrer" aria-label="Join our Discord server invite">
+      <a class="btn discord-btn" href="https://discord.gg/b3ykudvB9r" target="_blank" rel="noopener noreferrer">
         Join Discord
       </a>
-      <a class="btn patreon-btn" href="https://www.patreon.com/c/RobloxWatcher" target="_blank" rel="noopener noreferrer" aria-label="Support us on Patreon">
+      <a class="btn patreon-btn" href="https://www.patreon.com/c/RobloxWatcher" target="_blank" rel="noopener noreferrer">
         Support on Patreon
       </a>
-      <!-- Status tab -->
-      <a class="btn" href="#status">Status</a>
+      <a class="btn status-btn" href="#status">Status</a>
     </div>
   </header>
 
@@ -179,9 +182,8 @@
   <script>
     async function loadStatus() {
       try {
-        const response = await fetch('status.json'); // make sure this file exists in your repo root
+        const response = await fetch('status.json'); // Make sure this exists
         const data = await response.json();
-        console.log('Status JSON loaded:', data);
 
         const badge = document.getElementById('status-badge');
         let color = '', message = '';
@@ -208,7 +210,7 @@
         badge.style.color = 'white';
         badge.innerText = message;
 
-        // Maintenance
+        // Maintenance (optional)
         const maintenanceDiv = document.getElementById('maintenance');
         if(data.maintenance){
           maintenanceDiv.style.display='block';
@@ -217,9 +219,9 @@
           maintenanceDiv.style.display='none';
         }
 
-        // History
+        // History (optional)
         const historyUl = document.getElementById('status-history');
-        historyUl.innerHTML = ''; // clear previous
+        historyUl.innerHTML = '';
         if(data.history && data.history.length > 0){
           data.history.forEach(item=>{
             const li = document.createElement('li');
@@ -238,7 +240,7 @@
     }
 
     loadStatus();
-    setInterval(loadStatus, 30000); // auto-refresh every 30s
+    setInterval(loadStatus, 30000);
   </script>
 
 </body>
