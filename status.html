@@ -30,118 +30,40 @@
     transition: all 0.3s ease;
     text-align: center;
   }
-
-  .history {
-    width: 100%;
-    max-width: 600px;
-    background: #242529;
-    border-radius: 10px;
-    padding: 20px;
-    box-sizing: border-box;
-  }
-
-  .history h2 {
-    margin-top: 0;
-    margin-bottom: 10px;
-    font-size: 24px;
-  }
-
-  .history ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .history li {
-    padding: 8px 0;
-    border-bottom: 1px solid #3a3b3f;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .history li:last-child {
-    border-bottom: none;
-  }
-
-  .emoji {
-    margin-right: 10px;
-  }
-
-  .maintenance {
-    margin-top: 20px;
-    background: #faa61a;
-    color: black;
-    padding: 10px;
-    border-radius: 8px;
-    text-align: center;
-    font-weight: bold;
-  }
 </style>
 </head>
 <body>
 <h1>System Status</h1>
 <div id="status-badge">Loading...</div>
 
-<div class="maintenance" id="maintenance" style="display:none;"></div>
-
-<div class="history">
-  <h2>Past Updates</h2>
-  <ul id="history-list">
-    <!-- History items will go here -->
-  </ul>
-</div>
-
 <script>
 const statusBadge = document.getElementById('status-badge');
-const maintenanceDiv = document.getElementById('maintenance');
-const historyList = document.getElementById('history-list');
 
-// Simulate fetching JSON from repo root (replace with your own path if needed)
-const data = {
-  "current": {
-    "status": "online",
-    "message": "All systems online"
-  },
-  "maintenance": "Scheduled maintenance tonight at 11PM UTC",
-  "history": [
-    {"time":"Dec 7 2025 10:00 UTC", "status":"minor", "message":"Minor server issues"},
-    {"time":"Dec 6 2025 15:30 UTC", "status":"online", "message":"Back online"},
-    {"time":"Dec 5 2025 22:00 UTC", "status":"outage", "message":"Unexpected outage"}
-  ]
-};
+async function loadStatus() {
+  try {
+    const response = await fetch('status.json'); // Make sure status.json exists
+    const data = await response.json();
 
-// Map statuses to color + emoji
-function getBadge(status, message){
-  let color='', emoji='';
-  switch(status){
-    case 'online': color='#43b581'; emoji='🟢'; break;
-    case 'minor': color='#faa61a'; emoji='🟡'; break;
-    case 'outage': color='#f04747'; emoji='🔴'; break;
-    default: color='#777'; emoji='⚪';
+    let color = '', emoji = '';
+    switch(data.status){
+      case 'online': color='#43b581'; emoji='🟢'; break;
+      case 'minor': color='#faa61a'; emoji='🟡'; break;
+      case 'outage': color='#f04747'; emoji='🔴'; break;
+      default: color='#777'; emoji='⚪';
+    }
+
+    statusBadge.style.backgroundColor = color;
+    statusBadge.innerText = emoji + ' ' + (data.message || 'Status unknown');
+
+  } catch(err){
+    console.error('Error loading status:', err);
+    statusBadge.style.backgroundColor = '#777';
+    statusBadge.innerText = '⚪ Error loading status';
   }
-  return {color, text: emoji+' '+message};
 }
 
-// Current status
-const badgeInfo = getBadge(data.current.status, data.current.message);
-statusBadge.style.backgroundColor = badgeInfo.color;
-statusBadge.innerText = badgeInfo.text;
-
-// Maintenance
-if(data.maintenance){
-  maintenanceDiv.style.display='block';
-  maintenanceDiv.innerText = '⚠️ '+data.maintenance;
-}
-
-// History
-data.history.forEach(item=>{
-  const li = document.createElement('li');
-  const badge = getBadge(item.status, item.message);
-  li.innerHTML = `<span class="emoji">${badge.text.split(' ')[0]}</span> ${item.message} <span>${item.time}</span>`;
-  li.style.color = badge.color;
-  historyList.appendChild(li);
-});
+loadStatus();
+setInterval(loadStatus, 30000); // auto-refresh every 30 seconds
 </script>
 </body>
 </html>
