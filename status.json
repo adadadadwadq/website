@@ -1,53 +1,14 @@
 {
   "services": [
-    {
-      "name": "Website",
-      "status": "online",
-      "message": "All systems operational"
-    },
-    {
-      "name": "Discord Bot",
-      "status": "online",
-      "message": "Running normally"
-    },
-    {
-      "name": "Exploit Bot",
-      "status": "online",
-      "message": "All systems functional"
-    },
-    {
-      "name": "GitHub",
-      "status": "online",
-      "message": "All services operational"
-    },
-    {
-      "name": "Cloudflare",
-      "status": "online",
-      "message": "All systems operational"
-    },
-    {
-      "name": "Database",
-      "status": "online",
-      "message": "Running smoothly"
-    },
-    {
-      "name": "API",
-      "status": "online",
-      "message": "All endpoints responding"
-    },
-    {
-      "name": "Email Server",
-      "status": "online",
-      "message": "Deliveries normal"
-    }
+    {"name": "Website", "status": "online", "message": "Website is running smoothly"},
+    {"name": "Discord Bot", "status": "online", "message": "Bot is active and responding"},
+    {"name": "GitHub", "status": "online", "message": "Repository online"},
+    {"name": "Cloudflare", "status": "online", "message": "CDN is operational"},
+    {"name": "Database", "status": "online", "message": "Database is stable"}
   ],
-  "maintenance": "",
   "history": [
-    {
-      "service": "Website",
-      "status": "online",
-      "message": "All systems operational",
-      "time": "2025-12-08T00:00:00Z"
-    }
+    {"time":"Dec 7 2025 10:00 UTC", "status":"minor", "message":"Minor server issues"},
+    {"time":"Dec 6 2025 15:30 UTC", "status":"online", "message":"Back online"},
+    {"time":"Dec 5 2025 22:00 UTC", "status":"outage", "message":"Unexpected outage"}
   ]
 }
