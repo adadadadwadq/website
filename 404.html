@@ -9,18 +9,16 @@
     margin: 0;
     padding: 0;
     overflow: hidden;
-    font-family: Arial, sans-serif;
+    font-family: "Poppins", sans-serif;
     background: #0d0d0d;
     color: white;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
     text-align: center;
   }
 
-  /* Particle background */
   canvas {
     position: fixed;
     top: 0;
@@ -31,11 +29,13 @@
   .content {
     position: relative;
     z-index: 1;
+    animation: fadeIn 1s ease-out forwards;
   }
 
   img {
     width: 150px;
-    animation: spin 5s linear infinite;
+    animation: spin 6s linear infinite;
+    margin-bottom: 20px;
   }
 
   @keyframes spin {
@@ -43,14 +43,23 @@
     100% {transform: rotate(360deg);}
   }
 
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(-20px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+
   h1 {
-    font-size: 80px;
-    margin: 20px 0 10px;
+    font-size: 100px;
+    margin: 10px 0;
+    color: #ff4f4f;
+    text-shadow: 0 0 10px #ff4f4f, 0 0 20px #ff4f4f;
   }
 
   p {
     font-size: 24px;
-    margin: 5px 0;
+    margin: 10px 0;
+    color: #ddd;
+    text-shadow: 0 0 5px #000;
   }
 
   .buttons {
@@ -61,20 +70,33 @@
     text-decoration: none;
     color: #0d0d0d;
     background: #4fa3ff;
-    padding: 10px 20px;
+    padding: 12px 24px;
     margin: 5px;
     border-radius: 8px;
-    font-weight: bold;
-    transition: 0.3s;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
   }
 
   .buttons a:hover {
     background: #3578e5;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+  }
+
+  @media (max-width: 600px) {
+    h1 { font-size: 70px; }
+    p { font-size: 18px; }
+    img { width: 120px; }
+    .buttons a { padding: 10px 18px; font-size: 0.9rem; }
   }
 </style>
 </head>
 <body>
+
 <canvas id="canvas"></canvas>
+
 <div class="content">
   <img src="logo.png" alt="Logo">
   <h1>404</h1>
@@ -86,38 +108,51 @@
 </div>
 
 <script>
-  // Optional auto-redirect after 5 seconds
-  // setTimeout(() => { window.location.href = "/"; }, 5000);
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
 
-  // Particle background
-  const canvas = document.getElementById('canvas');
-  const ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const particles = [];
+for (let i = 0; i < 120; i++) {
+  particles.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    size: Math.random() * 3 + 1,
+    speedX: (Math.random() - 0.5) * 1.2,
+    speedY: (Math.random() - 0.5) * 1.2,
+    color: `rgba(79, 163, 255, ${Math.random()})`
+  });
+}
+
+function animate() {
+  ctx.fillStyle = 'rgba(13,13,13,0.3)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  particles.forEach(p => {
+    ctx.fillStyle = p.color;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.fill();
+
+    p.x += p.speedX;
+    p.y += p.speedY;
+
+    if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+  });
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+
+window.addEventListener('resize', () => {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
+});
+</script>
 
-  const particles = [];
-  for (let i = 0; i < 100; i++) {
-    particles.push({
-      x: Math.random()*canvas.width,
-      y: Math.random()*canvas.height,
-      size: Math.random()*3 + 1,
-      speedX: (Math.random()-0.5)*1,
-      speedY: (Math.random()-0.5)*1
-    });
-  }
-
-  function animate() {
-    ctx.fillStyle = 'rgba(13,13,13,0.3)';
-    ctx.fillRect(0,0,canvas.width,canvas.height);
-
-    particles.forEach(p => {
-      ctx.fillStyle = 'white';
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.size, 0, Math.PI*2);
-      ctx.fill();
-
-      p.x += p.speedX;
-      p.y += p.speedY;
-
-      if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
-      if (p.y < 0 || p.y > canvas.heig
+</body>
+</html>
