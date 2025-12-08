@@ -7,18 +7,18 @@
     },
     {
       "name": "Discord Bot",
-      "status": "minor",
-      "message": "Minor latency issues"
-    },
-    {
-      "name": "Exploit Bot",
       "status": "online",
       "message": "Running normally"
     },
     {
+      "name": "Exploit Bot",
+      "status": "online",
+      "message": "All systems functional"
+    },
+    {
       "name": "GitHub",
       "status": "online",
-      "message": "All services functional"
+      "message": "All services operational"
     },
     {
       "name": "Cloudflare",
@@ -27,13 +27,13 @@
     },
     {
       "name": "Database",
-      "status": "minor",
-      "message": "Read-only mode active for maintenance"
+      "status": "online",
+      "message": "Running smoothly"
     },
     {
       "name": "API",
-      "status": "outage",
-      "message": "Temporarily down"
+      "status": "online",
+      "message": "All endpoints responding"
     },
     {
       "name": "Email Server",
@@ -41,31 +41,13 @@
       "message": "Deliveries normal"
     }
   ],
-  "maintenance": "Scheduled maintenance tonight at 11 PM UTC",
+  "maintenance": "",
   "history": [
-    {
-      "service": "API",
-      "status": "outage",
-      "message": "Unexpected downtime",
-      "time": "2025-12-07T10:30:00Z"
-    },
-    {
-      "service": "Discord Bot",
-      "status": "minor",
-      "message": "Intermittent latency",
-      "time": "2025-12-07T09:00:00Z"
-    },
-    {
-      "service": "Database",
-      "status": "minor",
-      "message": "Read-only mode activated",
-      "time": "2025-12-06T22:15:00Z"
-    },
     {
       "service": "Website",
       "status": "online",
-      "message": "Back online",
-      "time": "2025-12-06T21:00:00Z"
+      "message": "All systems operational",
+      "time": "2025-12-08T00:00:00Z"
     }
   ]
 }
