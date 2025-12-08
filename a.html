@@ -177,7 +177,7 @@
   <script>
 async function loadStatus() {
   try {
-    const response = await fetch('/status.json');
+    const response = await fetch('status.json');
     const data = await response.json();
 
     const badge = document.getElementById('status-badge');
@@ -216,10 +216,12 @@ async function loadStatus() {
 }
 
 loadStatus();
+    setInterval(loadStatus, 30000); // reloads every 30 seconds
 </script>
 
   
 </body>
 </html>
+
 
 
