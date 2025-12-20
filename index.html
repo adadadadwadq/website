@@ -11,26 +11,60 @@
   <!-- Favicon -->
   <link rel="icon" href="logo.png" type="image/png">
 
-  <!-- Open Graph / Facebook -->
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Roblox Watcher">
-  <meta property="og:description" content="Official Webpage for Roblox Watcher and Exploit Watcher. Protect your Discord server with automated moderation tools and community protection.">
+  <meta property="og:description" content="Official Webpage for Roblox Watcher and Exploit Watcher.">
   <meta property="og:image" content="https://robloxwatcher.info/logo.png">
   <meta property="og:url" content="https://robloxwatcher.info/">
 
-  <!-- Twitter Card -->
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Roblox Watcher">
-  <meta name="twitter:description" content="Official Webpage for Roblox Watcher and Exploit Watcher. Protect your Discord server with automated moderation tools and community protection.">
-  <meta name="twitter:image" content="https://robloxwatcher.info/logo.png">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: "Poppins", sans-serif; }
-    html, body { height: 100%; background: #121212; color: #fff; }
-    a { color: inherit; text-decoration: none; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      background: #121212;
+      color: #fff;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Announcement Bar */
+    .announcement-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(90deg, #ff9900, #ff5e00);
+      color: #000;
+      font-weight: 600;
+      text-align: center;
+      padding: 10px 16px;
+      z-index: 2000;
+      font-size: 0.95rem;
+    }
+
+    body.has-announcement header {
+      top: 44px;
+    }
+
+    body.has-announcement {
+      padding-top: 108px;
+    }
 
     header {
       position: fixed;
@@ -46,9 +80,15 @@
       backdrop-filter: blur(5px);
       z-index: 1000;
     }
-    body { padding-top: 64px; }
 
-    .logo img { height: 46px; display: block; background: transparent; }
+    body {
+      padding-top: 64px;
+    }
+
+    .logo img {
+      height: 46px;
+      display: block;
+    }
 
     .buttons {
       display: flex;
@@ -58,7 +98,6 @@
     }
 
     .btn {
-      text-decoration: none;
       padding: 10px 16px;
       border-radius: 8px;
       font-weight: 600;
@@ -70,16 +109,18 @@
       transition: transform .16s ease, box-shadow .16s ease;
       white-space: nowrap;
     }
-    .btn:hover { transform: translateY(-3px); }
 
-    .roblox-btn { background: #28a745; color: #fff; }
-    .exploit-btn { background: #dc3545; color: #fff; }
-    .discord-btn { background: #5865F2; color: #fff; }
-    .patreon-btn { background: #f96854; color: #fff; }
-    .terms-btn { background: #00c3ff; color: #fff; }
-    .privacy-btn { background: #00c3ff; color: #fff; }
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .roblox-btn { background: #28a745; }
+    .exploit-btn { background: #dc3545; }
+    .discord-btn { background: #5865F2; }
+    .patreon-btn { background: #f96854; }
+    .terms-btn, .privacy-btn { background: #00c3ff; }
     .cybrancee-btn { background: #00ffcc; color: #000; }
-    .status-btn { background: #ff9900; color: #fff; }
+    .status-btn { background: #ff9900; }
 
     main {
       max-width: 1000px;
@@ -97,68 +138,77 @@
       text-align: center;
     }
 
-    section h2 { color: #00c3ff; font-size: 1.6rem; margin-bottom: 12px; }
-    section p { color: #ddd; line-height: 1.6; margin-bottom: 12px; }
+    section h2 {
+      color: #00c3ff;
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+    }
+
+    section p {
+      color: #ddd;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
 
     .feature-list {
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
       justify-content: center;
-      text-align: center;
-      margin-top: 16px;
     }
+
     .feature-card {
       background: rgba(255,255,255,0.05);
       padding: 20px;
       border-radius: 12px;
-      flex: 1 1 280px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.35);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
       max-width: 400px;
     }
-    .feature-card:hover { transform: translateY(-5px); box-shadow: 0 12px 24px rgba(0,0,0,0.45); }
 
-    footer { text-align: center; color: rgba(255,255,255,0.6); padding: 26px 10px; }
+    footer {
+      text-align: center;
+      color: rgba(255,255,255,0.6);
+      padding: 26px 10px;
+    }
   </style>
 </head>
+
 <body>
 
+  <!-- Announcement -->
+  <div id="announcementBar" class="announcement-bar" style="display:none;">
+    ⚠️ Please do not harass users on the banlist. Harassment will not be tolerated.
+  </div>
+
   <header>
-    <div class="logo" aria-label="Roblox Watcher logo">
+    <div class="logo">
       <img src="backgroundlogo.png" alt="Roblox Watcher logo">
     </div>
 
-    <div class="buttons" role="navigation" aria-label="Primary actions">
-      <a class="btn roblox-btn" href="https://discord.com/oauth2/authorize?client_id=1415587745933557871&scope=bot%20applications.commands" target="_blank" rel="noopener noreferrer">Install Roblox Watcher</a>
-      <a class="btn exploit-btn" href="https://discord.com/oauth2/authorize?client_id=1421635172809310268&scope=bot%20applications.commands" target="_blank" rel="noopener noreferrer">Install Exploit Watcher</a>
-      <a class="btn discord-btn" href="https://discord.gg/mTAUBsYeEr" target="_blank" rel="noopener noreferrer">Join Discord</a>
-      <a class="btn patreon-btn" href="https://www.patreon.com/c/RobloxWatcher" target="_blank" rel="noopener noreferrer">Support on Patreon</a>
-      <a class="btn terms-btn" href="terms.html" target="_blank" rel="noopener noreferrer">Terms</a>
-      <a class="btn privacy-btn" href="privacy.html" target="_blank" rel="noopener noreferrer">Privacy</a>
-      <a class="btn status-btn" href="/status.html" target="_blank" rel="noopener noreferrer">Check Status</a>
+    <div class="buttons">
+      <a class="btn roblox-btn" href="https://discord.com/oauth2/authorize?client_id=1415587745933557871&scope=bot%20applications.commands" target="_blank">Install Roblox Watcher</a>
+      <a class="btn exploit-btn" href="https://discord.com/oauth2/authorize?client_id=1421635172809310268&scope=bot%20applications.commands" target="_blank">Install Exploit Watcher</a>
+      <a class="btn discord-btn" href="https://discord.gg/mTAUBsYeEr" target="_blank">Join Discord</a>
+      <a class="btn patreon-btn" href="https://www.patreon.com/c/RobloxWatcher" target="_blank">Support on Patreon</a>
+      <a class="btn terms-btn" href="terms.html" target="_blank">Terms</a>
+      <a class="btn privacy-btn" href="privacy.html" target="_blank">Privacy</a>
+      <a class="btn status-btn" href="/status.html" target="_blank">Check Status</a>
     </div>
   </header>
 
   <main>
     <section>
       <h2>Welcome to Roblox Watcher & Exploit Watcher</h2>
-      <p>Roblox Watcher and Exploit Watcher provide reliable moderation tools to protect your server against users who engage in inappropriate experiences on Roblox & exploiters. Our bots provide reliable protection with minimal setup.</p>
+      <p>Roblox Watcher and Exploit Watcher provide reliable moderation tools to protect your server.</p>
     </section>
 
     <section>
       <h2>Reporting</h2>
-      <p>If you need to report users who may pose a significant risk to others or engage in harmful or unsafe activity online (such as pedophiles, predators, groomers, or users involved in inappropriate activity with minors), or to report a condo, a Roblox NSFW Discord, or any user engaging in sexual, predatory, or otherwise inappropriate behavior involving minors, you can submit a report through our <a href="https://discord.gg/mTAUBsYeEr" target="_blank" style="color:#00c3ff; text-decoration:underline;">official support Discord</a> to have the Discords or users considered for Roblox Watcher’s banlist.</p>
+      <p>Submit reports through our <a href="https://discord.gg/mTAUBsYeEr" target="_blank" style="color:#00c3ff;text-decoration:underline;">official support Discord</a>.</p>
     </section>
 
     <section>
       <h2>Appeals</h2>
-      <p>If you believe you were falsely added to a banlist and would like to appeal, please join our <a href="https://discord.gg/mTAUBsYeEr" target="_blank" style="color:#00c3ff; text-decoration:underline;">official support Discord</a>.</p>
-    </section>
-
-    <section>
-      <h2>Terms of Service & Privacy Policy</h2>
-      <p>By adding our bots to your server you agree to our <a href="terms.html" target="_blank" style="color:#00c3ff; text-decoration:underline;">Terms of Service</a> & <a href="privacy.html" target="_blank" style="color:#00c3ff; text-decoration:underline;">Privacy Policy</a>.</p>
+      <p>If you believe you were falsely added, join our Discord to appeal.</p>
     </section>
 
     <section>
@@ -166,26 +216,46 @@
       <div class="feature-list">
         <div class="feature-card">
           <h3>Reliable & Secure</h3>
-          <p>All moderation actions are managed exclusively by the server owner & administrators.</p>
+          <p>Moderation is fully controlled by server administrators.</p>
         </div>
         <div class="feature-card">
           <h3>Community Focused</h3>
-          <p>Designed to protect your server from inappropriate users & exploiters, our bots prioritize community safety while maintaining a smooth user experience.</p>
+          <p>We prioritize safety without harming legitimate users.</p>
         </div>
       </div>
     </section>
 
     <section>
       <h2>Powered by Cybrancee</h2>
-      <p>We recommend <strong>Cybrancee</strong> — a great company for cheap and affordable <strong>game hosting, domains, and bot hosting</strong>. They offer high performance, excellent support, and great prices for all your hosting needs.</p>
-      <a class="btn cybrancee-btn" href="https://cybrancee.com/mario" target="_blank" rel="noopener noreferrer">Click Me</a>
+      <p>Affordable hosting, domains, and bot hosting.</p>
+      <a class="btn cybrancee-btn" href="https://cybrancee.com/mario" target="_blank">Click Me</a>
     </section>
-
   </main>
 
   <footer>
     &copy; 2025 Roblox Watcher. All rights reserved.
   </footer>
+
+  <!-- Announcement Logic -->
+  <script>
+    const BAR_KEY = "rw_announcement_start";
+    const THREE_DAYS = 3 * 24 * 60 * 60 * 1000;
+
+    const bar = document.getElementById("announcementBar");
+    let startTime = localStorage.getItem(BAR_KEY);
+
+    if (!startTime) {
+      startTime = Date.now();
+      localStorage.setItem(BAR_KEY, startTime);
+    }
+
+    if (Date.now() - startTime < THREE_DAYS) {
+      bar.style.display = "block";
+      document.body.classList.add("has-announcement");
+    } else {
+      localStorage.removeItem(BAR_KEY);
+    }
+  </script>
 
 </body>
 </html>
